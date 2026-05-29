@@ -180,9 +180,6 @@ function HeroSection() {
 
       <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-xs font-mono text-muted-foreground">
-            <Sparkles className="h-3 w-3 text-accent" /> Open to placements · 2026
-          </span>
 
           <blockquote className="mt-8">
             <p className="font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
