@@ -187,9 +187,9 @@ function HeroSection() {
           <blockquote className="mt-8">
             <p className="font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
               <span className="text-muted-foreground">"</span>
-              Code is the <span className="text-grad">closest thing</span> we have
-              <br className="hidden sm:block" /> to <em className="italic">magic</em> — so write it like it
-              <br className="hidden sm:block" /> <span className="underline decoration-accent decoration-4 underline-offset-8">matters.</span>
+              Do not <em className="italic">wait</em> for the <span className="text-grad">perfect moment</span>;
+              <br className="hidden sm:block" /> take the moment
+              <br className="hidden sm:block" /> and <span className="underline decoration-accent decoration-4 underline-offset-8">make it perfect.</span>
               <span className="text-muted-foreground">"</span>
             </p>
             <footer className="mt-6 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
