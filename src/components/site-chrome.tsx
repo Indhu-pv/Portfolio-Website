@@ -57,7 +57,8 @@ export function SiteHeader() {
             </span>
             <span className="text-sm tracking-wide">
               <span className="text-grad">Indhu</span>
-              <span className="text-muted-foreground">.dev</span>
+              <span className="text-grad"> P</span>
+
             </span>
           </a>
 
