@@ -103,7 +103,10 @@
 
 @layer base {
   * { border-color: var(--color-border); }
-  html { font-family: var(--font-display); }
+  html { font-family: var(--font-display); scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
