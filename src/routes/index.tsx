@@ -49,7 +49,7 @@ export const Route = createFileRoute("/")({
 
 const stats = [
   { v: "8.4", l: "CGPA · CSE" },
-  { v: "3+", l: "Full-stack projects" },
+  { v: "4+", l: "Full-stack projects" },
   { v: "6+", l: "Hackathons & honors" },
   { v: "100%", l: "10th grade score" },
 ];
