@@ -16,7 +16,6 @@ import {
   Linkedin,
   Lock,
   Mail,
-  MapPin,
   Phone,
   School,
   ShieldCheck,
