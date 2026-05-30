@@ -486,7 +486,7 @@ function ProjectsSection() {
                   </div>
 
                   <a
-                    href="https://github.com/Indhu-pv"
+                    href={p.repo}
                     target="_blank"
                     rel="noreferrer"
                     className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-foreground link-underline"
