@@ -313,14 +313,14 @@ function AboutSection() {
               {
                 icon: GraduationCap,
                 title: "Velammal Engineering College",
-                org: "B.E. Computer Science & Engineering · CGPA 8.4",
+                lines: ["B.E. Computer Science & Engineering", "CGPA: 8.4"],
                 meta: "Chennai, TN · Sept 2023 – Present",
                 tag: "Undergrad",
               },
               {
                 icon: School,
                 title: "Govt. Girls Higher Secondary School",
-                org: "12th: 83.8% · 10th: 100%",
+                lines: ["12th grade: 83.8%", "10th grade: 100%"],
                 meta: "Thiruvallur, TN · 2022 – 2023",
                 tag: "School",
               },
@@ -340,8 +340,12 @@ function AboutSection() {
                       <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
                       <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
                     </div>
-                    <p className="mt-1 text-sm text-muted-foreground">{it.org}</p>
-                    <p className="mt-1 font-mono text-xs text-muted-foreground">{it.meta}</p>
+                    <div className="mt-2 space-y-1 text-sm text-muted-foreground">
+                      {it.lines.map((ln) => (
+                        <p key={ln}>{ln}</p>
+                      ))}
+                    </div>
+                    <p className="mt-2 font-mono text-xs text-muted-foreground">{it.meta}</p>
                   </div>
                 </li>
               );
