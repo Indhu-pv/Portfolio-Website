@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
+import { CursorGlow } from "@/components/cursor-glow";
 
 function NotFoundComponent() {
   return (
