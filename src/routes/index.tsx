@@ -444,7 +444,7 @@ function ProjectsSection() {
             Things I've <span className="text-grad">built</span>.
           </h2>
           <p className="mt-5 text-base text-muted-foreground md:text-lg">
-            Three projects spanning secure systems, ethical AI, and enterprise backends.
+            Four projects spanning secure systems, ethical AI, enterprise backends, and fraud detection.
           </p>
         </header>
 
