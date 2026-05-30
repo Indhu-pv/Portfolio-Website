@@ -365,8 +365,9 @@ function AboutSection() {
                 meta: "Feb 2026",
                 tag: "Backend",
                 bullets: [
-                  "Contributed to the development of a Java-based Inventory Monitoring and Reporting System by implementing inventory tracking, stock monitoring, and database management functionalities.",
-                  "Gained hands-on experience in enterprise application development using Spring Boot, Hibernate, MySQL, and Spring Security, while working with backend integration and reporting modules.",
+                  <>Built a Java-based <strong className="text-foreground">Inventory Monitoring</strong> system with stock tracking and reporting modules.</>,
+                  <>Implemented <strong className="text-foreground">role-based auth</strong> using Spring Boot, Hibernate and Spring Security.</>,
+                  <>Strengthened <strong className="text-foreground">enterprise development</strong> skills across backend integration and MySQL.</>,
                 ],
               },
               {
@@ -374,8 +375,9 @@ function AboutSection() {
                 meta: "Dec 2025",
                 tag: "Security",
                 bullets: [
-                  'Developed "Specialized Enciphered Access Through Text (Steganography)", a Java-based healthcare security application that securely hides and transfers sensitive patient information within encrypted text, ensuring authorized access to medical reports and records.',
-                  "Implemented the solution using Java/J2EE, MySQL, Apache Tomcat, and Eclipse IDE, enhancing patient data privacy, reducing risks of unauthorized access and data tampering, and improving secure digital sharing of healthcare information.",
+                  <>Built <strong className="text-foreground">Specialized Enciphered Access</strong> — a healthcare app hiding patient data inside encrypted text.</>,
+                  <>Used <strong className="text-foreground">AES encryption</strong> with Java/J2EE, MySQL and Apache Tomcat for safe report sharing.</>,
+                  <>Improved <strong className="text-foreground">data privacy</strong> and reduced risks of unauthorized access and tampering.</>,
                 ],
               },
             ].map((it, i) => (
