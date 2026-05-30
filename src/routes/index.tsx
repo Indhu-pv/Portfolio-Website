@@ -152,14 +152,14 @@ const projects: Project[] = [
 type Item = { icon: LucideIcon; title: string; org: string; year: string; tag: string };
 
 const achievements: Item[] = [
-  { icon: Trophy, title: "Quantathon Finalist", org: "Shaastra · IIT Madras", year: "2026", tag: "Finalist" },
-  { icon: Code2, title: "24-Hour Hackathon — CodHer's", org: "CodHer's Hackathon", year: "2026", tag: "Participated" },
   { icon: Users, title: "Social Hackathon", org: "CMR Institute of Technology · Bengaluru", year: "2026", tag: "Participated" },
-  { icon: Users, title: "Top 105 Teams", org: "Google Solution Challenge", year: "2025", tag: "Shortlist" },
-  { icon: Code2, title: "Internal Round Selection", org: "Smart India Hackathon", year: "2025", tag: "Selected" },
-  { icon: Award, title: "Programming Domain Certificate", org: "NPTEL", year: "2025", tag: "Certification" },
   { icon: Award, title: "Motivated Learners", org: "NPTEL", year: "2026", tag: "Recognition" },
+  { icon: Code2, title: "CodHer's Hackathon", org: "ACM-CEG · College of Engineering, Guindy", year: "2026", tag: "Participated" },
+  { icon: Trophy, title: "Quantathon Finalist", org: "Shaastra · IIT Madras", year: "2026", tag: "Finalist" },
+  { icon: Award, title: "Programming Domain Certificate", org: "NPTEL", year: "2025", tag: "Certification" },
   { icon: Award, title: "Discipline Star", org: "NPTEL", year: "2025", tag: "Recognition" },
+  { icon: Code2, title: "Internal Round Selection", org: "Smart India Hackathon", year: "2025", tag: "Selected" },
+  { icon: Users, title: "Top 105 Teams", org: "Google Solution Challenge", year: "2025", tag: "Shortlist" },
 ];
 
 const channels = [
