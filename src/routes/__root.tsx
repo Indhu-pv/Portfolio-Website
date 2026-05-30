@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
+import { CursorGlow } from "@/components/cursor-glow";
 
 function NotFoundComponent() {
   return (
@@ -119,6 +120,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
+        <CursorGlow />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1"><Outlet /></main>

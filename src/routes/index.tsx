@@ -16,7 +16,6 @@ import {
   Linkedin,
   Lock,
   Mail,
-  MapPin,
   Phone,
   School,
   ShieldCheck,
@@ -49,7 +48,7 @@ export const Route = createFileRoute("/")({
 
 const stats = [
   { v: "8.4", l: "CGPA · CSE" },
-  { v: "3+", l: "Full-stack projects" },
+  { v: "4+", l: "Full-stack projects" },
   { v: "6+", l: "Hackathons & honors" },
   { v: "100%", l: "10th grade score" },
 ];
@@ -83,6 +82,7 @@ type Project = {
   bullets: string[];
   stack: string[];
   accent: string;
+  repo: string;
 };
 
 const projects: Project[] = [
@@ -99,6 +99,7 @@ const projects: Project[] = [
     ],
     stack: ["Java", "JSP", "Servlets", "MySQL", "AES"],
     accent: "from-[oklch(0.55_0.22_275)] to-[oklch(0.6_0.2_310)]",
+    repo: "https://github.com/Indhu-pv/Specialized-Enciphered-Access-Through-Text",
   },
   {
     title: "XAI Guardian",
@@ -113,6 +114,7 @@ const projects: Project[] = [
     ],
     stack: ["Python", "Streamlit", "Pandas", "Plotly"],
     accent: "from-[oklch(0.7_0.2_25)] to-[oklch(0.75_0.18_55)]",
+    repo: "https://github.com/Indhu-pv/XAI-Guardian-For-MicroFinance",
   },
   {
     title: "Inventory Monitoring System",
@@ -127,6 +129,7 @@ const projects: Project[] = [
     ],
     stack: ["Spring Boot", "Hibernate", "Thymeleaf", "MySQL"],
     accent: "from-[oklch(0.7_0.18_180)] to-[oklch(0.6_0.2_240)]",
+    repo: "https://github.com/Indhu-pv/Inventory-System",
   },
   {
     title: "Fraudulent Detection System",
@@ -141,20 +144,21 @@ const projects: Project[] = [
     ],
     stack: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
     accent: "from-[oklch(0.6_0.22_15)] to-[oklch(0.65_0.2_50)]",
+    repo: "https://github.com/Indhu-pv/Fraudulent-Detection",
   },
 ];
 
 type Item = { icon: LucideIcon; title: string; org: string; year: string; tag: string };
 
 const achievements: Item[] = [
-  { icon: Trophy, title: "Quantathon Finalist", org: "Shaastra · IIT Madras", year: "2026", tag: "Finalist" },
-  { icon: Code2, title: "24-Hour Hackathon — CodHer's", org: "CodHer's Hackathon", year: "2026", tag: "Participated" },
   { icon: Users, title: "Social Hackathon", org: "CMR Institute of Technology · Bengaluru", year: "2026", tag: "Participated" },
-  { icon: Users, title: "Top 105 Teams", org: "Google Solution Challenge", year: "2025", tag: "Shortlist" },
-  { icon: Code2, title: "Internal Round Selection", org: "Smart India Hackathon", year: "2025", tag: "Selected" },
-  { icon: Award, title: "Programming Domain Certificate", org: "NPTEL", year: "2025", tag: "Certification" },
   { icon: Award, title: "Motivated Learners", org: "NPTEL", year: "2026", tag: "Recognition" },
+  { icon: Code2, title: "CodHer's Hackathon", org: "ACM-CEG · College of Engineering, Guindy", year: "2026", tag: "Participated" },
+  { icon: Trophy, title: "Quantathon Finalist", org: "Shaastra · IIT Madras", year: "2026", tag: "Finalist" },
+  { icon: Award, title: "Programming Domain Certificate", org: "NPTEL", year: "2025", tag: "Certification" },
   { icon: Award, title: "Discipline Star", org: "NPTEL", year: "2025", tag: "Recognition" },
+  { icon: Code2, title: "Internal Round Selection", org: "Smart India Hackathon", year: "2025", tag: "Selected" },
+  { icon: Users, title: "Top 105 Teams", org: "Google Solution Challenge", year: "2025", tag: "Shortlist" },
 ];
 
 const channels = [
@@ -308,14 +312,14 @@ function AboutSection() {
               {
                 icon: GraduationCap,
                 title: "Velammal Engineering College",
-                org: "B.E. Computer Science & Engineering · CGPA 8.4",
+                lines: ["B.E. Computer Science & Engineering", "CGPA: 8.4"],
                 meta: "Chennai, TN · Sept 2023 – Present",
                 tag: "Undergrad",
               },
               {
                 icon: School,
                 title: "Govt. Girls Higher Secondary School",
-                org: "12th: 83.8% · 10th: 100%",
+                lines: ["12th grade: 83.8%", "10th grade: 100%"],
                 meta: "Thiruvallur, TN · 2022 – 2023",
                 tag: "School",
               },
@@ -335,8 +339,12 @@ function AboutSection() {
                       <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
                       <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
                     </div>
-                    <p className="mt-1 text-sm text-muted-foreground">{it.org}</p>
-                    <p className="mt-1 font-mono text-xs text-muted-foreground">{it.meta}</p>
+                    <div className="mt-2 space-y-1 text-sm text-muted-foreground">
+                      {it.lines.map((ln) => (
+                        <p key={ln}>{ln}</p>
+                      ))}
+                    </div>
+                    <p className="mt-2 font-mono text-xs text-muted-foreground">{it.meta}</p>
                   </div>
                 </li>
               );
@@ -356,8 +364,9 @@ function AboutSection() {
                 meta: "Feb 2026",
                 tag: "Backend",
                 bullets: [
-                  "Contributed to the development of a Java-based Inventory Monitoring and Reporting System by implementing inventory tracking, stock monitoring, and database management functionalities.",
-                  "Gained hands-on experience in enterprise application development using Spring Boot, Hibernate, MySQL, and Spring Security, while working with backend integration and reporting modules.",
+                  <>Built a Java-based <strong className="text-foreground">Inventory Monitoring</strong> system with stock tracking and reporting modules.</>,
+                  <>Implemented <strong className="text-foreground">role-based auth</strong> using Spring Boot, Hibernate and Spring Security.</>,
+                  <>Strengthened <strong className="text-foreground">enterprise development</strong> skills across backend integration and MySQL.</>,
                 ],
               },
               {
@@ -365,8 +374,9 @@ function AboutSection() {
                 meta: "Dec 2025",
                 tag: "Security",
                 bullets: [
-                  'Developed "Specialized Enciphered Access Through Text (Steganography)", a Java-based healthcare security application that securely hides and transfers sensitive patient information within encrypted text, ensuring authorized access to medical reports and records.',
-                  "Implemented the solution using Java/J2EE, MySQL, Apache Tomcat, and Eclipse IDE, enhancing patient data privacy, reducing risks of unauthorized access and data tampering, and improving secure digital sharing of healthcare information.",
+                  <>Built <strong className="text-foreground">Specialized Enciphered Access</strong> — a healthcare app hiding patient data inside encrypted text.</>,
+                  <>Used <strong className="text-foreground">AES encryption</strong> with Java/J2EE, MySQL and Apache Tomcat for safe report sharing.</>,
+                  <>Improved <strong className="text-foreground">data privacy</strong> and reduced risks of unauthorized access and tampering.</>,
                 ],
               },
             ].map((it, i) => (
@@ -433,7 +443,7 @@ function ProjectsSection() {
             Things I've <span className="text-grad">built</span>.
           </h2>
           <p className="mt-5 text-base text-muted-foreground md:text-lg">
-            Three projects spanning secure systems, ethical AI, and enterprise backends.
+            Four projects spanning secure systems, ethical AI, enterprise backends, and fraud detection.
           </p>
         </header>
 
@@ -475,7 +485,7 @@ function ProjectsSection() {
                   </div>
 
                   <a
-                    href="https://github.com/Indhu-pv"
+                    href={p.repo}
                     target="_blank"
                     rel="noreferrer"
                     className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-foreground link-underline"
@@ -599,10 +609,6 @@ function ContactSection() {
           })}
         </div>
 
-        <div className="mt-8 flex items-center gap-3 rounded-2xl border border-border bg-card/60 p-5 text-sm text-muted-foreground backdrop-blur">
-          <MapPin className="h-4 w-4 shrink-0 text-accent" />
-          Based in Chennai, Tamil Nadu — open to roles across India and remote.
-        </div>
 
         <div className="mt-10 overflow-hidden rounded-3xl border border-border grad-primary p-[1px] shadow-glow">
           <div className="rounded-[calc(1.5rem-1px)] bg-card p-8 text-center md:p-10">
