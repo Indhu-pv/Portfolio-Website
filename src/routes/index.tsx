@@ -100,6 +100,7 @@ const projects: Project[] = [
     ],
     stack: ["Java", "JSP", "Servlets", "MySQL", "AES"],
     accent: "from-[oklch(0.55_0.22_275)] to-[oklch(0.6_0.2_310)]",
+    repo: "https://github.com/Indhu-pv/Specialized-Enciphered-Access-Through-Text",
   },
   {
     title: "XAI Guardian",
@@ -114,6 +115,7 @@ const projects: Project[] = [
     ],
     stack: ["Python", "Streamlit", "Pandas", "Plotly"],
     accent: "from-[oklch(0.7_0.2_25)] to-[oklch(0.75_0.18_55)]",
+    repo: "https://github.com/Indhu-pv/XAI-Guardian-For-MicroFinance",
   },
   {
     title: "Inventory Monitoring System",
@@ -128,6 +130,7 @@ const projects: Project[] = [
     ],
     stack: ["Spring Boot", "Hibernate", "Thymeleaf", "MySQL"],
     accent: "from-[oklch(0.7_0.18_180)] to-[oklch(0.6_0.2_240)]",
+    repo: "https://github.com/Indhu-pv/Inventory-System",
   },
   {
     title: "Fraudulent Detection System",
@@ -142,6 +145,7 @@ const projects: Project[] = [
     ],
     stack: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
     accent: "from-[oklch(0.6_0.22_15)] to-[oklch(0.65_0.2_50)]",
+    repo: "https://github.com/Indhu-pv/Fraudulent-Detection",
   },
 ];
 
