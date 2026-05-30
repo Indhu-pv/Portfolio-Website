@@ -299,33 +299,101 @@ function AboutSection() {
           </p>
         </header>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          <Tilt3D className="rounded-3xl border border-border bg-card p-6 shadow-soft md:p-7" intensity={6}>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-mono">
-              <GraduationCap className="h-3.5 w-3.5" /> Education
-            </div>
-            <h3 className="font-display text-xl font-bold">Velammal Engineering College</h3>
-            <p className="mt-1 text-sm text-muted-foreground">B.E. Computer Science & Engineering · CGPA 8.4</p>
-            <p className="mt-1 font-mono text-xs text-muted-foreground">Chennai, TN · Sept 2023 – Present</p>
+        {/* Education timeline */}
+        <div className="mt-12">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-mono">
+            <GraduationCap className="h-3.5 w-3.5" /> Education
+          </div>
+          <ol className="relative border-l-2 border-border pl-6 md:pl-8">
+            {[
+              {
+                icon: GraduationCap,
+                title: "Velammal Engineering College",
+                org: "B.E. Computer Science & Engineering · CGPA 8.4",
+                meta: "Chennai, TN · Sept 2023 – Present",
+                tag: "Undergrad",
+              },
+              {
+                icon: School,
+                title: "Govt. Girls Higher Secondary School",
+                org: "12th: 83.8% · 10th: 100%",
+                meta: "Thiruvallur, TN · 2022 – 2023",
+                tag: "School",
+              },
+            ].map((it, i) => {
+              const Icon = it.icon;
+              return (
+                <li
+                  key={it.title}
+                  className="group relative mb-8 last:mb-0 animate-fade-up"
+                  style={{ animationDelay: `${i * 70}ms` }}
+                >
+                  <span className="absolute -left-[34px] grid h-8 w-8 place-items-center rounded-full border border-border bg-card shadow-soft transition-all group-hover:grad-primary group-hover:text-primary-foreground md:-left-[42px] md:h-9 md:w-9">
+                    <Icon className="h-4 w-4" />
+                  </span>
+                  <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-glow">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
+                      <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                    </div>
+                    <p className="mt-1 text-sm text-muted-foreground">{it.org}</p>
+                    <p className="mt-1 font-mono text-xs text-muted-foreground">{it.meta}</p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
 
-            <div className="mt-6 border-t border-border pt-5">
-              <h3 className="font-display text-lg font-bold">Govt. Girls Higher Secondary School</h3>
-              <p className="mt-1 text-sm text-muted-foreground">12th: 83.8% · 10th: 100%</p>
-              <p className="mt-1 font-mono text-xs text-muted-foreground">Thiruvallur, TN · 2022 – 2023</p>
-            </div>
-          </Tilt3D>
-
-          <Tilt3D className="rounded-3xl border border-border bg-card p-6 shadow-soft md:p-7" intensity={6}>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-mono">
-              <Briefcase className="h-3.5 w-3.5" /> Internship
-            </div>
-            <h3 className="font-display text-xl font-bold">Infosys Springboard Virtual Internship 6.0</h3>
-            <p className="mt-1 font-mono text-xs text-muted-foreground">Feb 2026</p>
-            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
-              <li className="flex gap-2"><span className="text-accent">▸</span> Built a Java-based <span className="text-foreground">Inventory Monitoring & Reporting</span> system with stock tracking, reporting, and DB management.</li>
-              <li className="flex gap-2"><span className="text-accent">▸</span> Hands-on with <span className="text-foreground">Spring Boot, Hibernate, MySQL, Spring Security</span> across backend integration and reporting modules.</li>
-            </ul>
-          </Tilt3D>
+        {/* Internship timeline */}
+        <div className="mt-14">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-mono">
+            <Briefcase className="h-3.5 w-3.5" /> Internship
+          </div>
+          <ol className="relative border-l-2 border-border pl-6 md:pl-8">
+            {[
+              {
+                title: "Infosys Springboard Virtual Internship 6.0",
+                meta: "Feb 2026",
+                tag: "Backend",
+                bullets: [
+                  "Contributed to the development of a Java-based Inventory Monitoring and Reporting System by implementing inventory tracking, stock monitoring, and database management functionalities.",
+                  "Gained hands-on experience in enterprise application development using Spring Boot, Hibernate, MySQL, and Spring Security, while working with backend integration and reporting modules.",
+                ],
+              },
+              {
+                title: "VCodez",
+                meta: "Dec 2025",
+                tag: "Security",
+                bullets: [
+                  'Developed "Specialized Enciphered Access Through Text (Steganography)", a Java-based healthcare security application that securely hides and transfers sensitive patient information within encrypted text, ensuring authorized access to medical reports and records.',
+                  "Implemented the solution using Java/J2EE, MySQL, Apache Tomcat, and Eclipse IDE, enhancing patient data privacy, reducing risks of unauthorized access and data tampering, and improving secure digital sharing of healthcare information.",
+                ],
+              },
+            ].map((it, i) => (
+              <li
+                key={it.title}
+                className="group relative mb-8 last:mb-0 animate-fade-up"
+                style={{ animationDelay: `${i * 70}ms` }}
+              >
+                <span className="absolute -left-[34px] grid h-8 w-8 place-items-center rounded-full border border-border bg-card shadow-soft transition-all group-hover:grad-primary group-hover:text-primary-foreground md:-left-[42px] md:h-9 md:w-9">
+                  <Briefcase className="h-4 w-4" />
+                </span>
+                <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-glow">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
+                    <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                  </div>
+                  <p className="mt-1 font-mono text-xs text-muted-foreground">{it.meta}</p>
+                  <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                    {it.bullets.map((b, bi) => (
+                      <li key={bi} className="flex gap-2"><span className="mt-1 text-accent">▸</span><span>{b}</span></li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
 
         <div className="mt-14">
