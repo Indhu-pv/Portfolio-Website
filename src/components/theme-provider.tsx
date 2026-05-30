@@ -10,10 +10,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
-    const stored = (typeof window !== "undefined" && localStorage.getItem("theme")) as Theme | null;
-    const initial: Theme = stored ?? "dark";
-    setTheme(initial);
-    document.documentElement.classList.toggle("dark", initial === "dark");
+    // Always default to dark theme on every fresh load.
+    setTheme("dark");
+    document.documentElement.classList.add("dark");
   }, []);
 
   const toggle = () => {
