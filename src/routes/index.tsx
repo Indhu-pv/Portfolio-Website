@@ -221,12 +221,6 @@ function HeroSection() {
             >
               <Mail className="h-4 w-4" /> Get in touch
             </a>
-            <a
-              href="mailto:pindhu2605@gmail.com?subject=Resume request"
-              className="inline-flex items-center gap-2 rounded-xl px-3 py-3 text-sm font-medium text-muted-foreground link-underline"
-            >
-              <Download className="h-4 w-4" /> Resume
-            </a>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-5 text-muted-foreground">
