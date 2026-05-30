@@ -129,6 +129,20 @@ const projects: Project[] = [
     stack: ["Spring Boot", "Hibernate", "Thymeleaf", "MySQL"],
     accent: "from-[oklch(0.7_0.18_180)] to-[oklch(0.6_0.2_240)]",
   },
+  {
+    title: "Fraudulent Detection System",
+    tag: "Banking · Security",
+    icon: Banknote,
+    blurb:
+      "Real-time financial transaction monitoring and fraud detection using rule-based analysis and behavioural pattern recognition to improve transaction security.",
+    bullets: [
+      "User registration, authentication and transaction management",
+      "Fraud risk scoring and suspicious transaction classification",
+      "Admin monitoring dashboard for fraud reporting and analysis",
+    ],
+    stack: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
+    accent: "from-[oklch(0.6_0.22_15)] to-[oklch(0.65_0.2_50)]",
+  },
 ];
 
 type Item = { icon: LucideIcon; title: string; org: string; year: string; tag: string };
@@ -136,9 +150,11 @@ type Item = { icon: LucideIcon; title: string; org: string; year: string; tag: s
 const achievements: Item[] = [
   { icon: Trophy, title: "Quantathon Finalist", org: "Shaastra · IIT Madras", year: "2026", tag: "Finalist" },
   { icon: Code2, title: "24-Hour Hackathon — CodHer's", org: "CodHer's Hackathon", year: "2026", tag: "Participated" },
+  { icon: Users, title: "Social Hackathon", org: "CMR Institute of Technology · Bengaluru", year: "2026", tag: "Participated" },
   { icon: Users, title: "Top 105 Teams", org: "Google Solution Challenge", year: "2025", tag: "Shortlist" },
   { icon: Code2, title: "Internal Round Selection", org: "Smart India Hackathon", year: "2025", tag: "Selected" },
   { icon: Award, title: "Programming Domain Certificate", org: "NPTEL", year: "2025", tag: "Certification" },
+  { icon: Award, title: "Motivated Learners", org: "NPTEL", year: "2026", tag: "Recognition" },
   { icon: Award, title: "Discipline Star", org: "NPTEL", year: "2025", tag: "Recognition" },
 ];
 
