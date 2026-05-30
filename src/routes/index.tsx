@@ -610,10 +610,6 @@ function ContactSection() {
           })}
         </div>
 
-        <div className="mt-8 flex items-center gap-3 rounded-2xl border border-border bg-card/60 p-5 text-sm text-muted-foreground backdrop-blur">
-          <MapPin className="h-4 w-4 shrink-0 text-accent" />
-          Based in Chennai, Tamil Nadu — open to roles across India and remote.
-        </div>
 
         <div className="mt-10 overflow-hidden rounded-3xl border border-border grad-primary p-[1px] shadow-glow">
           <div className="rounded-[calc(1.5rem-1px)] bg-card p-8 text-center md:p-10">
