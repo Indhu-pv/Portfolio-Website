@@ -19,8 +19,6 @@ import {
   MapPin,
   Phone,
   School,
-  ShieldCheck,
-  Sparkles,
   Trophy,
   Users,
 } from "lucide-react";
