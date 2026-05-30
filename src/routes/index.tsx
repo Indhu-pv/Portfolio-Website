@@ -190,9 +190,6 @@ function HeroSection() {
               <br className="hidden sm:block" /> and <span className="underline decoration-accent decoration-4 underline-offset-8">make it perfect.</span>
               <span className="text-muted-foreground">"</span>
             </p>
-            <footer className="mt-6 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              — a principle I build by
-            </footer>
           </blockquote>
 
           <p className="mx-auto mt-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
