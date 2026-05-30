@@ -19,6 +19,7 @@ import {
   MapPin,
   Phone,
   School,
+  ShieldCheck,
   Trophy,
   Users,
 } from "lucide-react";
