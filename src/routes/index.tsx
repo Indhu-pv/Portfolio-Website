@@ -83,6 +83,7 @@ type Project = {
   bullets: string[];
   stack: string[];
   accent: string;
+  repo: string;
 };
 
 const projects: Project[] = [
