@@ -340,24 +340,25 @@ function AboutSection() {
               return (
                 <li
                   key={it.title}
-                  className="group relative mb-8 last:mb-0 animate-fade-up"
-                  style={{ animationDelay: `${i * 70}ms` }}
+                  className="group relative mb-8 last:mb-0"
                 >
                   <span className="absolute -left-[34px] grid h-8 w-8 place-items-center rounded-full border border-border bg-card shadow-soft transition-all group-hover:grad-primary group-hover:text-primary-foreground md:-left-[42px] md:h-9 md:w-9">
                     <Icon className="h-4 w-4" />
                   </span>
-                  <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-glow">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
-                      <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                  <Reveal direction={i % 2 === 0 ? "right" : "left"} delay={i * 80}>
+                    <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02] hover:border-primary/40 hover:shadow-glow">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
+                        <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                      </div>
+                      <div className="mt-2 space-y-1 text-sm text-muted-foreground">
+                        {it.lines.map((ln) => (
+                          <p key={ln}>{ln}</p>
+                        ))}
+                      </div>
+                      <p className="mt-2 font-mono text-xs text-muted-foreground">{it.meta}</p>
                     </div>
-                    <div className="mt-2 space-y-1 text-sm text-muted-foreground">
-                      {it.lines.map((ln) => (
-                        <p key={ln}>{ln}</p>
-                      ))}
-                    </div>
-                    <p className="mt-2 font-mono text-xs text-muted-foreground">{it.meta}</p>
-                  </div>
+                  </Reveal>
                 </li>
               );
             })}
