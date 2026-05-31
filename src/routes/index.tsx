@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Tilt3D } from "@/components/tilt-3d";
+import { Reveal } from "@/components/reveal";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -11,6 +12,7 @@ import {
   Check,
   Code2,
   Copy,
+  FileText,
   Github,
   GraduationCap,
   Linkedin,
@@ -23,6 +25,8 @@ import {
   Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+const RESUME_URL = "https://drive.google.com/file/d/1hW-dZF4FFC9stAVeY93P33-v4UWy5Hhu/view?usp=drivesdk";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -113,7 +117,7 @@ const projects: Project[] = [
       "Interactive Streamlit dashboards for stakeholders",
     ],
     stack: ["Python", "Streamlit", "Pandas", "Plotly"],
-    accent: "from-[oklch(0.7_0.2_25)] to-[oklch(0.75_0.18_55)]",
+    accent: "from-[oklch(0.78_0.12_55)] to-[oklch(0.82_0.1_85)]",
     repo: "https://github.com/Indhu-pv/XAI-Guardian-For-MicroFinance",
   },
   {
@@ -143,7 +147,7 @@ const projects: Project[] = [
       "Admin monitoring dashboard for fraud reporting and analysis",
     ],
     stack: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
-    accent: "from-[oklch(0.6_0.22_15)] to-[oklch(0.65_0.2_50)]",
+    accent: "from-[oklch(0.78_0.13_20)] to-[oklch(0.82_0.11_50)]",
     repo: "https://github.com/Indhu-pv/Fraudulent-Detection",
   },
 ];
@@ -240,6 +244,14 @@ function HeroSection() {
             >
               <Mail className="h-4 w-4" /> Get in touch
             </a>
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-glow"
+            >
+              <FileText className="h-4 w-4" /> Resume
+            </a>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-5 text-muted-foreground">
@@ -328,24 +340,25 @@ function AboutSection() {
               return (
                 <li
                   key={it.title}
-                  className="group relative mb-8 last:mb-0 animate-fade-up"
-                  style={{ animationDelay: `${i * 70}ms` }}
+                  className="group relative mb-8 last:mb-0"
                 >
                   <span className="absolute -left-[34px] grid h-8 w-8 place-items-center rounded-full border border-border bg-card shadow-soft transition-all group-hover:grad-primary group-hover:text-primary-foreground md:-left-[42px] md:h-9 md:w-9">
                     <Icon className="h-4 w-4" />
                   </span>
-                  <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-glow">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
-                      <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                  <Reveal direction={i % 2 === 0 ? "right" : "left"} delay={i * 80}>
+                    <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02] hover:border-primary/40 hover:shadow-glow">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
+                        <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                      </div>
+                      <div className="mt-2 space-y-1 text-sm text-muted-foreground">
+                        {it.lines.map((ln) => (
+                          <p key={ln}>{ln}</p>
+                        ))}
+                      </div>
+                      <p className="mt-2 font-mono text-xs text-muted-foreground">{it.meta}</p>
                     </div>
-                    <div className="mt-2 space-y-1 text-sm text-muted-foreground">
-                      {it.lines.map((ln) => (
-                        <p key={ln}>{ln}</p>
-                      ))}
-                    </div>
-                    <p className="mt-2 font-mono text-xs text-muted-foreground">{it.meta}</p>
-                  </div>
+                  </Reveal>
                 </li>
               );
             })}
@@ -382,24 +395,25 @@ function AboutSection() {
             ].map((it, i) => (
               <li
                 key={it.title}
-                className="group relative mb-8 last:mb-0 animate-fade-up"
-                style={{ animationDelay: `${i * 70}ms` }}
+                className="group relative mb-8 last:mb-0"
               >
                 <span className="absolute -left-[34px] grid h-8 w-8 place-items-center rounded-full border border-border bg-card shadow-soft transition-all group-hover:grad-primary group-hover:text-primary-foreground md:-left-[42px] md:h-9 md:w-9">
                   <Briefcase className="h-4 w-4" />
                 </span>
-                <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-glow">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
-                    <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                <Reveal direction={i % 2 === 0 ? "right" : "left"} delay={i * 80}>
+                  <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02] hover:border-primary/40 hover:shadow-glow">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
+                      <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                    </div>
+                    <p className="mt-1 font-mono text-xs text-muted-foreground">{it.meta}</p>
+                    <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                      {it.bullets.map((b, bi) => (
+                        <li key={bi} className="flex gap-2"><span className="mt-1 text-accent">▸</span><span>{b}</span></li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="mt-1 font-mono text-xs text-muted-foreground">{it.meta}</p>
-                  <ul className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
-                    {it.bullets.map((b, bi) => (
-                      <li key={bi} className="flex gap-2"><span className="mt-1 text-accent">▸</span><span>{b}</span></li>
-                    ))}
-                  </ul>
-                </div>
+                </Reveal>
               </li>
             ))}
           </ol>
@@ -450,50 +464,54 @@ function ProjectsSection() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => {
             const Icon = p.icon;
+            const directions = ["left", "up", "right", "up"] as const;
             return (
-              <Tilt3D
-                key={p.title}
-                className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-shadow hover:shadow-3d"
-                intensity={8}
-              >
-                <div className={`relative h-32 bg-gradient-to-br ${p.accent} p-5`}>
-                  <div className="absolute inset-0 grid-bg opacity-30" />
-                  <div className="relative flex items-start justify-between">
-                    <div className="grid h-12 w-12 place-items-center rounded-xl bg-white/15 text-white backdrop-blur">
-                      <Icon className="h-6 w-6" />
+              <Reveal key={p.title} direction={directions[i % 4]} delay={i * 100} className="h-full">
+                <Tilt3D
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:scale-[1.03] hover:shadow-3d"
+                  intensity={8}
+                >
+                  <div className={`relative h-40 bg-gradient-to-br ${p.accent} p-5`}>
+                    <div className="absolute inset-0 grid-bg opacity-30" />
+                    <div className="relative flex items-start justify-between">
+                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/20 text-white shadow-lg backdrop-blur transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <span className="rounded-full bg-black/30 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
+                        0{i + 1}
+                      </span>
                     </div>
-                    <span className="rounded-full bg-black/25 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
-                      0{i + 1}
-                    </span>
+                    <p className="absolute bottom-3 left-5 right-5 font-display text-sm font-bold uppercase tracking-wide text-white/95 drop-shadow">
+                      {p.tag}
+                    </p>
                   </div>
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{p.tag}</p>
-                  <h3 className="mt-1 font-display text-xl font-bold leading-tight">{p.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-display text-xl font-bold leading-tight">{p.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
 
-                  <ul className="mt-4 space-y-1.5 text-xs text-muted-foreground">
-                    {p.bullets.map((b) => (
-                      <li key={b} className="flex gap-2"><span className="text-accent">▸</span>{b}</li>
-                    ))}
-                  </ul>
+                    <ul className="mt-4 space-y-1.5 text-xs text-muted-foreground">
+                      {p.bullets.map((b) => (
+                        <li key={b} className="flex gap-2"><span className="text-accent">▸</span>{b}</li>
+                      ))}
+                    </ul>
 
-                  <div className="mt-5 flex flex-wrap gap-1.5">
-                    {p.stack.map((s) => (
-                      <span key={s} className="rounded-md bg-secondary px-2 py-0.5 font-mono text-[10px]">{s}</span>
-                    ))}
+                    <div className="mt-5 flex flex-wrap gap-1.5">
+                      {p.stack.map((s) => (
+                        <span key={s} className="rounded-md bg-secondary px-2 py-0.5 font-mono text-[10px]">{s}</span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={p.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-foreground link-underline"
+                    >
+                      View on GitHub <ArrowUpRight className="h-4 w-4" />
+                    </a>
                   </div>
-
-                  <a
-                    href={p.repo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-foreground link-underline"
-                  >
-                    View on GitHub <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </Tilt3D>
+                </Tilt3D>
+              </Reveal>
             );
           })}
         </div>
@@ -524,19 +542,20 @@ function AchievementsSection() {
             return (
               <li
                 key={it.title}
-                className="group relative mb-8 animate-fade-up"
-                style={{ animationDelay: `${i * 70}ms` }}
+                className="group relative mb-8"
               >
                 <span className="absolute -left-[34px] grid h-8 w-8 place-items-center rounded-full border border-border bg-card shadow-soft transition-all group-hover:grad-primary group-hover:text-primary-foreground md:-left-[42px] md:h-9 md:w-9">
                   <Icon className="h-4 w-4" />
                 </span>
-                <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all group-hover:-translate-y-0.5 group-hover:border-primary/40 group-hover:shadow-glow">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
-                    <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                <Reveal direction={i % 2 === 0 ? "right" : "left"} delay={i * 60}>
+                  <div className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02] hover:border-primary/40 hover:shadow-glow">
+                    <div className="flex flex-wrap items-baseline justify-between gap-2">
+                      <h3 className="font-display text-base font-bold md:text-lg">{it.title}</h3>
+                      <span className="rounded-full bg-secondary px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider">{it.tag}</span>
+                    </div>
+                    <p className="mt-1 text-sm text-muted-foreground">{it.org} · <span className="font-mono">{it.year}</span></p>
                   </div>
-                  <p className="mt-1 text-sm text-muted-foreground">{it.org} · <span className="font-mono">{it.year}</span></p>
-                </div>
+                </Reveal>
               </li>
             );
           })}
@@ -574,37 +593,39 @@ function ContactSection() {
         </header>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
-          {channels.map((c) => {
+          {channels.map((c, i) => {
             const Icon = c.icon;
             const isCopied = copied === c.value;
             return (
-              <Tilt3D key={c.label} className="rounded-2xl border border-border bg-card p-5 shadow-soft md:p-6" intensity={6}>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex min-w-0 items-start gap-3 md:gap-4">
-                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl grad-primary text-primary-foreground shadow-glow md:h-12 md:w-12">
-                      <Icon className="h-5 w-5" />
+              <Reveal key={c.label} direction={i % 2 === 0 ? "left" : "right"} delay={i * 80}>
+                <Tilt3D className="rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-500 hover:scale-[1.03] hover:shadow-glow md:p-6" intensity={6}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex min-w-0 items-start gap-3 md:gap-4">
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl grad-primary text-primary-foreground shadow-glow md:h-12 md:w-12">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{c.label}</p>
+                        <a
+                          href={c.href}
+                          target={c.href.startsWith("http") ? "_blank" : undefined}
+                          rel="noreferrer"
+                          className="mt-0.5 block break-all font-display text-base font-semibold link-underline md:text-lg"
+                        >
+                          {c.value}
+                        </a>
+                      </div>
                     </div>
-                    <div className="min-w-0">
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{c.label}</p>
-                      <a
-                        href={c.href}
-                        target={c.href.startsWith("http") ? "_blank" : undefined}
-                        rel="noreferrer"
-                        className="mt-0.5 block break-all font-display text-base font-semibold link-underline md:text-lg"
-                      >
-                        {c.value}
-                      </a>
-                    </div>
+                    <button
+                      onClick={() => copy(c.value)}
+                      aria-label={`Copy ${c.label}`}
+                      className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-surface transition-colors hover:bg-secondary"
+                    >
+                      {isCopied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4 text-muted-foreground" />}
+                    </button>
                   </div>
-                  <button
-                    onClick={() => copy(c.value)}
-                    aria-label={`Copy ${c.label}`}
-                    className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-surface transition-colors hover:bg-secondary"
-                  >
-                    {isCopied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4 text-muted-foreground" />}
-                  </button>
-                </div>
-              </Tilt3D>
+                </Tilt3D>
+              </Reveal>
             );
           })}
         </div>
