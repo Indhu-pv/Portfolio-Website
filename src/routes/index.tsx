@@ -593,37 +593,39 @@ function ContactSection() {
         </header>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2">
-          {channels.map((c) => {
+          {channels.map((c, i) => {
             const Icon = c.icon;
             const isCopied = copied === c.value;
             return (
-              <Tilt3D key={c.label} className="rounded-2xl border border-border bg-card p-5 shadow-soft md:p-6" intensity={6}>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex min-w-0 items-start gap-3 md:gap-4">
-                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl grad-primary text-primary-foreground shadow-glow md:h-12 md:w-12">
-                      <Icon className="h-5 w-5" />
+              <Reveal key={c.label} direction={i % 2 === 0 ? "left" : "right"} delay={i * 80}>
+                <Tilt3D className="rounded-2xl border border-border bg-card p-5 shadow-soft transition-all duration-500 hover:scale-[1.03] hover:shadow-glow md:p-6" intensity={6}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex min-w-0 items-start gap-3 md:gap-4">
+                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl grad-primary text-primary-foreground shadow-glow md:h-12 md:w-12">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{c.label}</p>
+                        <a
+                          href={c.href}
+                          target={c.href.startsWith("http") ? "_blank" : undefined}
+                          rel="noreferrer"
+                          className="mt-0.5 block break-all font-display text-base font-semibold link-underline md:text-lg"
+                        >
+                          {c.value}
+                        </a>
+                      </div>
                     </div>
-                    <div className="min-w-0">
-                      <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{c.label}</p>
-                      <a
-                        href={c.href}
-                        target={c.href.startsWith("http") ? "_blank" : undefined}
-                        rel="noreferrer"
-                        className="mt-0.5 block break-all font-display text-base font-semibold link-underline md:text-lg"
-                      >
-                        {c.value}
-                      </a>
-                    </div>
+                    <button
+                      onClick={() => copy(c.value)}
+                      aria-label={`Copy ${c.label}`}
+                      className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-surface transition-colors hover:bg-secondary"
+                    >
+                      {isCopied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4 text-muted-foreground" />}
+                    </button>
                   </div>
-                  <button
-                    onClick={() => copy(c.value)}
-                    aria-label={`Copy ${c.label}`}
-                    className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-surface transition-colors hover:bg-secondary"
-                  >
-                    {isCopied ? <Check className="h-4 w-4 text-accent" /> : <Copy className="h-4 w-4 text-muted-foreground" />}
-                  </button>
-                </div>
-              </Tilt3D>
+                </Tilt3D>
+              </Reveal>
             );
           })}
         </div>
