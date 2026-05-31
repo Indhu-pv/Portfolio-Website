@@ -147,7 +147,7 @@ const projects: Project[] = [
       "Admin monitoring dashboard for fraud reporting and analysis",
     ],
     stack: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
-    accent: "from-[oklch(0.6_0.22_15)] to-[oklch(0.65_0.2_50)]",
+    accent: "from-[oklch(0.78_0.13_20)] to-[oklch(0.82_0.11_50)]",
     repo: "https://github.com/Indhu-pv/Fraudulent-Detection",
   },
 ];
