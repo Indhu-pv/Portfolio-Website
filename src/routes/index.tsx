@@ -244,6 +244,14 @@ function HeroSection() {
             >
               <Mail className="h-4 w-4" /> Get in touch
             </a>
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-glow"
+            >
+              <FileText className="h-4 w-4" /> Resume
+            </a>
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-5 text-muted-foreground">
