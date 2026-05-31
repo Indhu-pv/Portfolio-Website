@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Tilt3D } from "@/components/tilt-3d";
+import { Reveal } from "@/components/reveal";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -11,6 +12,7 @@ import {
   Check,
   Code2,
   Copy,
+  FileText,
   Github,
   GraduationCap,
   Linkedin,
@@ -23,6 +25,8 @@ import {
   Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+const RESUME_URL = "https://drive.google.com/file/d/1hW-dZF4FFC9stAVeY93P33-v4UWy5Hhu/view?usp=drivesdk";
 
 export const Route = createFileRoute("/")({
   head: () => ({
