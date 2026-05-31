@@ -117,7 +117,7 @@ const projects: Project[] = [
       "Interactive Streamlit dashboards for stakeholders",
     ],
     stack: ["Python", "Streamlit", "Pandas", "Plotly"],
-    accent: "from-[oklch(0.7_0.2_25)] to-[oklch(0.75_0.18_55)]",
+    accent: "from-[oklch(0.78_0.12_55)] to-[oklch(0.82_0.1_85)]",
     repo: "https://github.com/Indhu-pv/XAI-Guardian-For-MicroFinance",
   },
   {
