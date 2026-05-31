@@ -464,50 +464,54 @@ function ProjectsSection() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => {
             const Icon = p.icon;
+            const directions = ["left", "up", "right", "up"] as const;
             return (
-              <Tilt3D
-                key={p.title}
-                className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-shadow hover:shadow-3d"
-                intensity={8}
-              >
-                <div className={`relative h-32 bg-gradient-to-br ${p.accent} p-5`}>
-                  <div className="absolute inset-0 grid-bg opacity-30" />
-                  <div className="relative flex items-start justify-between">
-                    <div className="grid h-12 w-12 place-items-center rounded-xl bg-white/15 text-white backdrop-blur">
-                      <Icon className="h-6 w-6" />
+              <Reveal key={p.title} direction={directions[i % 4]} delay={i * 100} className="h-full">
+                <Tilt3D
+                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:scale-[1.03] hover:shadow-3d"
+                  intensity={8}
+                >
+                  <div className={`relative h-40 bg-gradient-to-br ${p.accent} p-5`}>
+                    <div className="absolute inset-0 grid-bg opacity-30" />
+                    <div className="relative flex items-start justify-between">
+                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/20 text-white shadow-lg backdrop-blur transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <span className="rounded-full bg-black/30 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
+                        0{i + 1}
+                      </span>
                     </div>
-                    <span className="rounded-full bg-black/25 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
-                      0{i + 1}
-                    </span>
+                    <p className="absolute bottom-3 left-5 right-5 font-display text-sm font-bold uppercase tracking-wide text-white/95 drop-shadow">
+                      {p.tag}
+                    </p>
                   </div>
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{p.tag}</p>
-                  <h3 className="mt-1 font-display text-xl font-bold leading-tight">{p.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-display text-xl font-bold leading-tight">{p.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
 
-                  <ul className="mt-4 space-y-1.5 text-xs text-muted-foreground">
-                    {p.bullets.map((b) => (
-                      <li key={b} className="flex gap-2"><span className="text-accent">▸</span>{b}</li>
-                    ))}
-                  </ul>
+                    <ul className="mt-4 space-y-1.5 text-xs text-muted-foreground">
+                      {p.bullets.map((b) => (
+                        <li key={b} className="flex gap-2"><span className="text-accent">▸</span>{b}</li>
+                      ))}
+                    </ul>
 
-                  <div className="mt-5 flex flex-wrap gap-1.5">
-                    {p.stack.map((s) => (
-                      <span key={s} className="rounded-md bg-secondary px-2 py-0.5 font-mono text-[10px]">{s}</span>
-                    ))}
+                    <div className="mt-5 flex flex-wrap gap-1.5">
+                      {p.stack.map((s) => (
+                        <span key={s} className="rounded-md bg-secondary px-2 py-0.5 font-mono text-[10px]">{s}</span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={p.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-foreground link-underline"
+                    >
+                      View on GitHub <ArrowUpRight className="h-4 w-4" />
+                    </a>
                   </div>
-
-                  <a
-                    href={p.repo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-foreground link-underline"
-                  >
-                    View on GitHub <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </Tilt3D>
+                </Tilt3D>
+              </Reveal>
             );
           })}
         </div>
