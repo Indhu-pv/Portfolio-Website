@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Tilt3D } from "@/components/tilt-3d";
 import { Reveal } from "@/components/reveal";
+import { Parallax } from "@/components/parallax";
+import { ResumeButton } from "@/components/resume-button";
+import { MobileCollapse } from "@/components/mobile-collapse";
+import { TechStack } from "@/components/tech-stack";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -12,7 +16,6 @@ import {
   Check,
   Code2,
   Copy,
-  FileText,
   Github,
   GraduationCap,
   Linkedin,
