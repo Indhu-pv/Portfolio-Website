@@ -8,8 +8,10 @@ export function CursorGlow() {
     // Disable on touch / coarse pointer devices
     if (typeof window === "undefined") return;
     const mq = window.matchMedia("(pointer: fine)");
-    if (!mq.matches) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!mq.matches || reduced.matches) return;
     setEnabled(true);
+
 
     let raf = 0;
     let tx = window.innerWidth / 2;
