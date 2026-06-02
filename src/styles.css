@@ -203,4 +203,26 @@
     to { opacity: 1; transform: translateY(0); }
   }
   .animate-fade-up { animation: fade-up 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+  @keyframes tech-float {
+    0%, 100% { transform: perspective(1100px) rotateX(6deg) rotateY(-4deg) translate3d(0, 0, 0); }
+    50%      { transform: perspective(1100px) rotateX(6deg) rotateY(-4deg) translate3d(0, -8px, 0); }
+  }
+  .animate-tech-float { animation: tech-float 6s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-blob,
+    .animate-shimmer,
+    .animate-fade-up,
+    .animate-tech-float {
+      animation: none !important;
+    }
+    * {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+
 }

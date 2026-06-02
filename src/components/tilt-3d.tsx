@@ -1,4 +1,5 @@
 import { useRef, type ReactNode, type MouseEvent } from "react";
+import { prefersReducedMotion } from "@/lib/motion";
 
 interface Tilt3DProps {
   children: ReactNode;
@@ -6,10 +7,11 @@ interface Tilt3DProps {
   intensity?: number;
 }
 
-export function Tilt3D({ children, className = "", intensity = 12 }: Tilt3DProps) {
+export function Tilt3D({ children, className = "", intensity = 10 }: Tilt3DProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (prefersReducedMotion()) return;
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -35,6 +37,7 @@ export function Tilt3D({ children, className = "", intensity = 12 }: Tilt3DProps
       style={{
         backgroundImage:
           "radial-gradient(600px circle at var(--mx,50%) var(--my,50%), color-mix(in oklab, var(--primary) 15%, transparent), transparent 40%)",
+        transition: "transform 500ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 500ms cubic-bezier(0.2,0.8,0.2,1)",
       }}
     >
       {children}

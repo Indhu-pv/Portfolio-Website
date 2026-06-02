@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Tilt3D } from "@/components/tilt-3d";
 import { Reveal } from "@/components/reveal";
+import { Parallax } from "@/components/parallax";
+import { ResumeButton } from "@/components/resume-button";
+import { MobileCollapse } from "@/components/mobile-collapse";
+import { TechStack } from "@/components/tech-stack";
 import { useState } from "react";
 import {
   ArrowRight,
@@ -12,7 +16,6 @@ import {
   Check,
   Code2,
   Copy,
-  FileText,
   Github,
   GraduationCap,
   Linkedin,
@@ -70,13 +73,8 @@ const stack = [
   "Streamlit",
 ];
 
-const skillGroups = [
-  { title: "Languages", items: ["Java", "Python", "C++", "JavaScript"] },
-  { title: "Backend", items: ["Spring Boot", "Servlets", "JDBC", "Express.js", "Node.js"] },
-  { title: "Web", items: ["HTML", "CSS", "JSP", "React", "Thymeleaf"] },
-  { title: "Databases", items: ["MySQL", "MongoDB"] },
-  { title: "Tools", items: ["Git", "GitHub", "Maven", "Postman", "VS Code"] },
-];
+// Tech-stack categories now live in `src/components/tech-stack.tsx`.
+
 
 type Project = {
   title: string;
@@ -176,15 +174,16 @@ const channels = [
 
 function Home() {
   return (
-    <div className="relative">
+    <div className="relative" style={{ perspective: "1600px" }}>
       <HeroSection />
-      <AboutSection />
-      <ProjectsSection />
-      <AchievementsSection />
-      <ContactSection />
+      <Parallax depth={30}><AboutSection /></Parallax>
+      <Parallax depth={50}><ProjectsSection /></Parallax>
+      <Parallax depth={20}><AchievementsSection /></Parallax>
+      <Parallax depth={40}><ContactSection /></Parallax>
     </div>
   );
 }
+
 
 /* -------------------------------- hero -------------------------------- */
 
@@ -244,14 +243,8 @@ function HeroSection() {
             >
               <Mail className="h-4 w-4" /> Get in touch
             </a>
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-surface px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-glow"
-            >
-              <FileText className="h-4 w-4" /> Resume
-            </a>
+            <ResumeButton url={RESUME_URL} />
+
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-5 text-muted-foreground">
@@ -419,27 +412,12 @@ function AboutSection() {
           </ol>
         </div>
 
-        <div className="mt-14">
-          <h3 className="font-display text-2xl font-bold md:text-3xl">Technical toolkit</h3>
-          <p className="mt-2 text-muted-foreground">Tools I reach for, organised by where they live.</p>
+        <MobileCollapse title="Technical toolkit" defaultOpen>
+          <Parallax depth={20}>
+            <TechStack />
+          </Parallax>
+        </MobileCollapse>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {skillGroups.map((g) => (
-              <div
-                key={g.title}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
-              >
-                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full grad-primary opacity-0 blur-2xl transition-opacity group-hover:opacity-30" />
-                <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{g.title}</h4>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {g.items.map((i) => (
-                    <span key={i} className="rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-xs">{i}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -471,20 +449,39 @@ function ProjectsSection() {
                   className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:scale-[1.03] hover:shadow-3d"
                   intensity={8}
                 >
-                  <div className={`relative h-40 bg-gradient-to-br ${p.accent} p-5`}>
-                    <div className="absolute inset-0 grid-bg opacity-30" />
+                  <div className={`relative h-44 overflow-hidden bg-gradient-to-br ${p.accent} p-5 sm:h-48`}>
+                    {/* subtle topographic grid */}
+                    <div className="absolute inset-0 grid-bg opacity-25" aria-hidden />
+                    {/* huge ghost glyph as artwork — crisp at any DPI because it's an SVG icon */}
+                    <Icon
+                      aria-hidden
+                      className="pointer-events-none absolute -bottom-6 -right-4 h-44 w-44 text-white/15 drop-shadow-[0_4px_24px_rgba(0,0,0,0.25)] transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:-rotate-6 group-hover:scale-110"
+                    />
                     <div className="relative flex items-start justify-between">
-                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/20 text-white shadow-lg backdrop-blur transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/25 text-white shadow-lg ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-110 group-hover:rotate-6">
                         <Icon className="h-7 w-7" />
                       </div>
-                      <span className="rounded-full bg-black/30 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
+                      <span className="rounded-full bg-black/35 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
                         0{i + 1}
                       </span>
                     </div>
-                    <p className="absolute bottom-3 left-5 right-5 font-display text-sm font-bold uppercase tracking-wide text-white/95 drop-shadow">
-                      {p.tag}
-                    </p>
+                    <div className="absolute bottom-3 left-5 right-5 flex flex-wrap items-end justify-between gap-2">
+                      <p className="font-display text-sm font-bold uppercase tracking-wide text-white/95 drop-shadow">
+                        {p.tag}
+                      </p>
+                      <div className="flex flex-wrap justify-end gap-1">
+                        {p.stack.slice(0, 3).map((s) => (
+                          <span
+                            key={s}
+                            className="rounded-md bg-white/20 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-white ring-1 ring-white/20 backdrop-blur"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
+
                   <div className="flex flex-1 flex-col p-6">
                     <h3 className="font-display text-xl font-bold leading-tight">{p.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
