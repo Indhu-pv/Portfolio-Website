@@ -416,27 +416,12 @@ function AboutSection() {
           </ol>
         </div>
 
-        <div className="mt-14">
-          <h3 className="font-display text-2xl font-bold md:text-3xl">Technical toolkit</h3>
-          <p className="mt-2 text-muted-foreground">Tools I reach for, organised by where they live.</p>
+        <MobileCollapse title="Technical toolkit" defaultOpen>
+          <Parallax depth={20}>
+            <TechStack />
+          </Parallax>
+        </MobileCollapse>
 
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {skillGroups.map((g) => (
-              <div
-                key={g.title}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card/60 p-5 backdrop-blur transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
-              >
-                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full grad-primary opacity-0 blur-2xl transition-opacity group-hover:opacity-30" />
-                <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{g.title}</h4>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {g.items.map((i) => (
-                    <span key={i} className="rounded-md border border-border bg-surface px-2.5 py-1 font-mono text-xs">{i}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
