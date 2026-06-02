@@ -73,13 +73,8 @@ const stack = [
   "Streamlit",
 ];
 
-const skillGroups = [
-  { title: "Languages", items: ["Java", "Python", "C++", "JavaScript"] },
-  { title: "Backend", items: ["Spring Boot", "Servlets", "JDBC", "Express.js", "Node.js"] },
-  { title: "Web", items: ["HTML", "CSS", "JSP", "React", "Thymeleaf"] },
-  { title: "Databases", items: ["MySQL", "MongoDB"] },
-  { title: "Tools", items: ["Git", "GitHub", "Maven", "Postman", "VS Code"] },
-];
+// Tech-stack categories now live in `src/components/tech-stack.tsx`.
+
 
 type Project = {
   title: string;
