@@ -174,15 +174,16 @@ const channels = [
 
 function Home() {
   return (
-    <div className="relative">
+    <div className="relative" style={{ perspective: "1600px" }}>
       <HeroSection />
-      <AboutSection />
-      <ProjectsSection />
-      <AchievementsSection />
-      <ContactSection />
+      <Parallax depth={30}><AboutSection /></Parallax>
+      <Parallax depth={50}><ProjectsSection /></Parallax>
+      <Parallax depth={20}><AchievementsSection /></Parallax>
+      <Parallax depth={40}><ContactSection /></Parallax>
     </div>
   );
 }
+
 
 /* -------------------------------- hero -------------------------------- */
 
