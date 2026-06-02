@@ -448,20 +448,39 @@ function ProjectsSection() {
                   className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-500 hover:scale-[1.03] hover:shadow-3d"
                   intensity={8}
                 >
-                  <div className={`relative h-40 bg-gradient-to-br ${p.accent} p-5`}>
-                    <div className="absolute inset-0 grid-bg opacity-30" />
+                  <div className={`relative h-44 overflow-hidden bg-gradient-to-br ${p.accent} p-5 sm:h-48`}>
+                    {/* subtle topographic grid */}
+                    <div className="absolute inset-0 grid-bg opacity-25" aria-hidden />
+                    {/* huge ghost glyph as artwork — crisp at any DPI because it's an SVG icon */}
+                    <Icon
+                      aria-hidden
+                      className="pointer-events-none absolute -bottom-6 -right-4 h-44 w-44 text-white/15 drop-shadow-[0_4px_24px_rgba(0,0,0,0.25)] transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:-rotate-6 group-hover:scale-110"
+                    />
                     <div className="relative flex items-start justify-between">
-                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/20 text-white shadow-lg backdrop-blur transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/25 text-white shadow-lg ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-110 group-hover:rotate-6">
                         <Icon className="h-7 w-7" />
                       </div>
-                      <span className="rounded-full bg-black/30 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
+                      <span className="rounded-full bg-black/35 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
                         0{i + 1}
                       </span>
                     </div>
-                    <p className="absolute bottom-3 left-5 right-5 font-display text-sm font-bold uppercase tracking-wide text-white/95 drop-shadow">
-                      {p.tag}
-                    </p>
+                    <div className="absolute bottom-3 left-5 right-5 flex flex-wrap items-end justify-between gap-2">
+                      <p className="font-display text-sm font-bold uppercase tracking-wide text-white/95 drop-shadow">
+                        {p.tag}
+                      </p>
+                      <div className="flex flex-wrap justify-end gap-1">
+                        {p.stack.slice(0, 3).map((s) => (
+                          <span
+                            key={s}
+                            className="rounded-md bg-white/20 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-white ring-1 ring-white/20 backdrop-blur"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
+
                   <div className="flex flex-1 flex-col p-6">
                     <h3 className="font-display text-xl font-bold leading-tight">{p.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
