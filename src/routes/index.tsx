@@ -442,11 +442,11 @@ function AboutSection() {
           </ol>
         </div>
 
-        <MobileCollapse title="Technical toolkit" defaultOpen>
-          <Parallax depth={20}>
+        <div className="mt-16 md:mt-20">
+          <MobileCollapse title="Technical toolkit" defaultOpen>
             <TechStack />
-          </Parallax>
-        </MobileCollapse>
+          </MobileCollapse>
+        </div>
 
       </div>
     </section>
