@@ -206,10 +206,10 @@ function Home() {
   return (
     <div className="relative" style={{ perspective: "1600px" }}>
       <HeroSection />
-      <Parallax depth={30}><AboutSection /></Parallax>
-      <Parallax depth={50}><ProjectsSection /></Parallax>
-      <Parallax depth={20}><AchievementsSection /></Parallax>
-      <Parallax depth={40}><ContactSection /></Parallax>
+      <Parallax depth={25}><AboutSection /></Parallax>
+      <Parallax depth={70}><ProjectsSection /></Parallax>
+      <Parallax depth={45}><AchievementsSection /></Parallax>
+      <Parallax depth={60}><ContactSection /></Parallax>
     </div>
   );
 }
