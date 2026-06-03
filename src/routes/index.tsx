@@ -235,11 +235,11 @@ function HeroSection() {
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
 
           <blockquote className="mt-8">
-            <p className="font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
+            <p className="font-display text-[1.6rem] font-bold leading-[1.15] tracking-tight xs:text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
               <span className="text-muted-foreground">"</span>
               Do not <em className="italic">wait</em> for the <span className="text-grad">perfect moment</span>;
               <br className="hidden sm:block" /> take the moment
-              <br className="hidden sm:block" /> and <span className="underline decoration-accent decoration-4 underline-offset-8">make it perfect.</span>
+              <br className="hidden sm:block" /> and <span className="underline decoration-accent decoration-2 underline-offset-4 md:decoration-4 md:underline-offset-8">make it perfect.</span>
               <span className="text-muted-foreground">"</span>
             </p>
           </blockquote>
@@ -442,11 +442,15 @@ function AboutSection() {
           </ol>
         </div>
 
-        <div className="mt-16 md:mt-20">
+        <div className="mt-20 md:mt-24">
+          <div className="mb-6 hidden md:inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-mono">
+            <Code2 className="h-3.5 w-3.5" /> Technical toolkit
+          </div>
           <MobileCollapse title="Technical toolkit" defaultOpen>
             <TechStack />
           </MobileCollapse>
         </div>
+
 
       </div>
     </section>

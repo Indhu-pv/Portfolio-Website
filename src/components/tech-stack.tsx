@@ -142,20 +142,14 @@ function TechCard({ cat, index }: { cat: Category; index: number }) {
 
 export function TechStack() {
   return (
-    <div className="mt-14">
-      <h3 className="font-display text-2xl font-bold md:text-3xl">Technical toolkit</h3>
-      <p className="mt-2 text-muted-foreground">
-        An isometric look at the stack — hover any pill for a brand-coloured neon lift.
-      </p>
-
-      <div
-        className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-        style={{ perspective: "1400px" }}
-      >
-        {categories.map((c, i) => (
-          <TechCard key={c.title} cat={c} index={i} />
-        ))}
-      </div>
+    <div
+      className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+      style={{ perspective: "1400px" }}
+    >
+      {categories.map((c, i) => (
+        <TechCard key={c.title} cat={c} index={i} />
+      ))}
     </div>
   );
 }
+
