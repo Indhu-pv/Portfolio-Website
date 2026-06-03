@@ -5,7 +5,15 @@ import { Parallax } from "@/components/parallax";
 import { ResumeButton } from "@/components/resume-button";
 import { MobileCollapse } from "@/components/mobile-collapse";
 import { TechStack } from "@/components/tech-stack";
-import { useState } from "react";
+import {
+  BankLogo,
+  JavaLogo,
+  MySQLLogo,
+  PythonLogo,
+  ShieldLogo,
+  SpringLogo,
+} from "@/components/brand-logos";
+import { useState, type ComponentType, type SVGProps } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -28,6 +36,8 @@ import {
   Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+type BrandLogo = ComponentType<SVGProps<SVGSVGElement>>;
 
 const RESUME_URL = "https://drive.google.com/file/d/1hW-dZF4FFC9stAVeY93P33-v4UWy5Hhu/view?usp=drivesdk";
 
