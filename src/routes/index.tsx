@@ -235,11 +235,11 @@ function HeroSection() {
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
 
           <blockquote className="mt-8">
-            <p className="font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
+            <p className="font-display text-[1.6rem] font-bold leading-[1.15] tracking-tight xs:text-3xl sm:text-4xl md:text-6xl lg:text-7xl">
               <span className="text-muted-foreground">"</span>
               Do not <em className="italic">wait</em> for the <span className="text-grad">perfect moment</span>;
               <br className="hidden sm:block" /> take the moment
-              <br className="hidden sm:block" /> and <span className="underline decoration-accent decoration-4 underline-offset-8">make it perfect.</span>
+              <br className="hidden sm:block" /> and <span className="underline decoration-accent decoration-2 underline-offset-4 md:decoration-4 md:underline-offset-8">make it perfect.</span>
               <span className="text-muted-foreground">"</span>
             </p>
           </blockquote>
