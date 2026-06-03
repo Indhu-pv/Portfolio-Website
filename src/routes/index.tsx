@@ -442,11 +442,15 @@ function AboutSection() {
           </ol>
         </div>
 
-        <div className="mt-16 md:mt-20">
+        <div className="mt-20 md:mt-24">
+          <div className="mb-6 hidden md:inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-mono">
+            <Code2 className="h-3.5 w-3.5" /> Technical toolkit
+          </div>
           <MobileCollapse title="Technical toolkit" defaultOpen>
             <TechStack />
           </MobileCollapse>
         </div>
+
 
       </div>
     </section>
