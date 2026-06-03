@@ -95,6 +95,7 @@ type Project = {
   stack: string[];
   accent: string;
   repo: string;
+  logos: { L: BrandLogo; label: string }[];
 };
 
 const projects: Project[] = [
@@ -112,6 +113,11 @@ const projects: Project[] = [
     stack: ["Java", "JSP", "Servlets", "MySQL", "AES"],
     accent: "from-[oklch(0.55_0.22_275)] to-[oklch(0.6_0.2_310)]",
     repo: "https://github.com/Indhu-pv/Specialized-Enciphered-Access-Through-Text",
+    logos: [
+      { L: JavaLogo, label: "Java" },
+      { L: MySQLLogo, label: "MySQL" },
+      { L: ShieldLogo, label: "AES" },
+    ],
   },
   {
     title: "XAI Guardian",
@@ -127,6 +133,10 @@ const projects: Project[] = [
     stack: ["Python", "Streamlit", "Pandas", "Plotly"],
     accent: "from-[oklch(0.78_0.12_55)] to-[oklch(0.82_0.1_85)]",
     repo: "https://github.com/Indhu-pv/XAI-Guardian-For-MicroFinance",
+    logos: [
+      { L: PythonLogo, label: "Python" },
+      { L: ShieldLogo, label: "Trust" },
+    ],
   },
   {
     title: "Inventory Monitoring System",
@@ -142,6 +152,11 @@ const projects: Project[] = [
     stack: ["Spring Boot", "Hibernate", "Thymeleaf", "MySQL"],
     accent: "from-[oklch(0.7_0.18_180)] to-[oklch(0.6_0.2_240)]",
     repo: "https://github.com/Indhu-pv/Inventory-System",
+    logos: [
+      { L: SpringLogo, label: "Spring Boot" },
+      { L: JavaLogo, label: "Java" },
+      { L: MySQLLogo, label: "MySQL" },
+    ],
   },
   {
     title: "Fraudulent Detection System",
@@ -157,6 +172,11 @@ const projects: Project[] = [
     stack: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
     accent: "from-[oklch(0.78_0.13_20)] to-[oklch(0.82_0.11_50)]",
     repo: "https://github.com/Indhu-pv/Fraudulent-Detection",
+    logos: [
+      { L: BankLogo, label: "Banking" },
+      { L: SpringLogo, label: "Spring Boot" },
+      { L: MySQLLogo, label: "MySQL" },
+    ],
   },
 ];
 
