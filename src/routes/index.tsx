@@ -5,7 +5,15 @@ import { Parallax } from "@/components/parallax";
 import { ResumeButton } from "@/components/resume-button";
 import { MobileCollapse } from "@/components/mobile-collapse";
 import { TechStack } from "@/components/tech-stack";
-import { useState } from "react";
+import {
+  BankLogo,
+  JavaLogo,
+  MySQLLogo,
+  PythonLogo,
+  ShieldLogo,
+  SpringLogo,
+} from "@/components/brand-logos";
+import { useState, type ComponentType, type SVGProps } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -28,6 +36,8 @@ import {
   Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+
+type BrandLogo = ComponentType<SVGProps<SVGSVGElement>>;
 
 const RESUME_URL = "https://drive.google.com/file/d/1hW-dZF4FFC9stAVeY93P33-v4UWy5Hhu/view?usp=drivesdk";
 
@@ -85,6 +95,7 @@ type Project = {
   stack: string[];
   accent: string;
   repo: string;
+  logos: { L: BrandLogo; label: string }[];
 };
 
 const projects: Project[] = [
@@ -102,6 +113,11 @@ const projects: Project[] = [
     stack: ["Java", "JSP", "Servlets", "MySQL", "AES"],
     accent: "from-[oklch(0.55_0.22_275)] to-[oklch(0.6_0.2_310)]",
     repo: "https://github.com/Indhu-pv/Specialized-Enciphered-Access-Through-Text",
+    logos: [
+      { L: JavaLogo, label: "Java" },
+      { L: MySQLLogo, label: "MySQL" },
+      { L: ShieldLogo, label: "AES" },
+    ],
   },
   {
     title: "XAI Guardian",
@@ -117,6 +133,10 @@ const projects: Project[] = [
     stack: ["Python", "Streamlit", "Pandas", "Plotly"],
     accent: "from-[oklch(0.78_0.12_55)] to-[oklch(0.82_0.1_85)]",
     repo: "https://github.com/Indhu-pv/XAI-Guardian-For-MicroFinance",
+    logos: [
+      { L: PythonLogo, label: "Python" },
+      { L: ShieldLogo, label: "Trust" },
+    ],
   },
   {
     title: "Inventory Monitoring System",
@@ -132,6 +152,11 @@ const projects: Project[] = [
     stack: ["Spring Boot", "Hibernate", "Thymeleaf", "MySQL"],
     accent: "from-[oklch(0.7_0.18_180)] to-[oklch(0.6_0.2_240)]",
     repo: "https://github.com/Indhu-pv/Inventory-System",
+    logos: [
+      { L: SpringLogo, label: "Spring Boot" },
+      { L: JavaLogo, label: "Java" },
+      { L: MySQLLogo, label: "MySQL" },
+    ],
   },
   {
     title: "Fraudulent Detection System",
@@ -147,6 +172,11 @@ const projects: Project[] = [
     stack: ["Java", "Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
     accent: "from-[oklch(0.78_0.13_20)] to-[oklch(0.82_0.11_50)]",
     repo: "https://github.com/Indhu-pv/Fraudulent-Detection",
+    logos: [
+      { L: BankLogo, label: "Banking" },
+      { L: SpringLogo, label: "Spring Boot" },
+      { L: MySQLLogo, label: "MySQL" },
+    ],
   },
 ];
 
@@ -176,10 +206,10 @@ function Home() {
   return (
     <div className="relative" style={{ perspective: "1600px" }}>
       <HeroSection />
-      <Parallax depth={30}><AboutSection /></Parallax>
-      <Parallax depth={50}><ProjectsSection /></Parallax>
-      <Parallax depth={20}><AchievementsSection /></Parallax>
-      <Parallax depth={40}><ContactSection /></Parallax>
+      <Parallax depth={25}><AboutSection /></Parallax>
+      <Parallax depth={70}><ProjectsSection /></Parallax>
+      <Parallax depth={45}><AchievementsSection /></Parallax>
+      <Parallax depth={60}><ContactSection /></Parallax>
     </div>
   );
 }
@@ -412,11 +442,11 @@ function AboutSection() {
           </ol>
         </div>
 
-        <MobileCollapse title="Technical toolkit" defaultOpen>
-          <Parallax depth={20}>
+        <div className="mt-16 md:mt-20">
+          <MobileCollapse title="Technical toolkit" defaultOpen>
             <TechStack />
-          </Parallax>
-        </MobileCollapse>
+          </MobileCollapse>
+        </div>
 
       </div>
     </section>
@@ -458,8 +488,21 @@ function ProjectsSection() {
                       className="pointer-events-none absolute -bottom-6 -right-4 h-44 w-44 text-white/15 drop-shadow-[0_4px_24px_rgba(0,0,0,0.25)] transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:-rotate-6 group-hover:scale-110"
                     />
                     <div className="relative flex items-start justify-between">
-                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/25 text-white shadow-lg ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-110 group-hover:rotate-6">
-                        <Icon className="h-7 w-7" />
+                      <div className="flex items-center gap-2">
+                        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/25 text-white shadow-lg ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-110 group-hover:rotate-6">
+                          <Icon className="h-7 w-7" />
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          {p.logos.map(({ L, label }) => (
+                            <span
+                              key={label}
+                              title={label}
+                              className="grid h-8 w-8 place-items-center rounded-lg bg-white/20 p-1.5 text-white shadow-sm ring-1 ring-white/25 backdrop-blur-md transition-transform duration-500 hover:-translate-y-0.5 hover:bg-white/30 sm:h-9 sm:w-9 sm:p-2"
+                            >
+                              <L aria-label={label} />
+                            </span>
+                          ))}
+                        </div>
                       </div>
                       <span className="rounded-full bg-black/35 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
                         0{i + 1}
