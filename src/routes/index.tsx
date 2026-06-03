@@ -488,8 +488,21 @@ function ProjectsSection() {
                       className="pointer-events-none absolute -bottom-6 -right-4 h-44 w-44 text-white/15 drop-shadow-[0_4px_24px_rgba(0,0,0,0.25)] transition-transform duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:-rotate-6 group-hover:scale-110"
                     />
                     <div className="relative flex items-start justify-between">
-                      <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/25 text-white shadow-lg ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-110 group-hover:rotate-6">
-                        <Icon className="h-7 w-7" />
+                      <div className="flex items-center gap-2">
+                        <div className="grid h-14 w-14 place-items-center rounded-2xl bg-white/25 text-white shadow-lg ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-110 group-hover:rotate-6">
+                          <Icon className="h-7 w-7" />
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          {p.logos.map(({ L, label }) => (
+                            <span
+                              key={label}
+                              title={label}
+                              className="grid h-8 w-8 place-items-center rounded-lg bg-white/20 p-1.5 text-white shadow-sm ring-1 ring-white/25 backdrop-blur-md transition-transform duration-500 hover:-translate-y-0.5 hover:bg-white/30 sm:h-9 sm:w-9 sm:p-2"
+                            >
+                              <L aria-label={label} />
+                            </span>
+                          ))}
+                        </div>
                       </div>
                       <span className="rounded-full bg-black/35 px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider text-white backdrop-blur">
                         0{i + 1}
