@@ -347,7 +347,7 @@ function AboutSection() {
               {
                 icon: GraduationCap,
                 title: "Velammal Engineering College",
-                lines: ["B.E. Computer Science & Engineering", "CGPA: 8.4"],
+                lines: ["B.E. Computer Science & Engineering", "CGPA: 8.5"],
                 meta: "Chennai, TN · Sept 2023 – Present",
                 tag: "Undergrad",
               },
