@@ -1,4 +1,4 @@
-import { useRef, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import {
   Boxes,
   Braces,
@@ -81,12 +81,28 @@ const categories: Category[] = [
   },
 ];
 
-function TechCard({ cat, index }: { cat: Category; index: number }) {
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const on = () => setIsDesktop(mq.matches);
+    on();
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return isDesktop;
+}
+
+function TechCard({ cat, index, isDesktop }: { cat: Category; index: number; isDesktop: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const Icon = cat.icon;
 
+  const baseTransform = isDesktop
+    ? "perspective(1100px) rotateX(6deg) rotateY(-4deg)"
+    : "none";
+
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (prefersReducedMotion()) return;
+    if (!isDesktop || prefersReducedMotion()) return;
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -98,7 +114,7 @@ function TechCard({ cat, index }: { cat: Category; index: number }) {
   const onLeave = () => {
     const el = ref.current;
     if (!el) return;
-    el.style.transform = "perspective(1100px) rotateX(6deg) rotateY(-4deg) translateZ(0)";
+    el.style.transform = baseTransform;
   };
 
   return (
@@ -106,9 +122,9 @@ function TechCard({ cat, index }: { cat: Category; index: number }) {
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="group relative rounded-2xl border border-white/10 bg-[color-mix(in_oklab,var(--card)_55%,transparent)] p-5 shadow-soft backdrop-blur-md transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:border-primary/40 hover:shadow-glow motion-safe:animate-tech-float"
+      className={`group relative rounded-2xl border border-white/10 bg-[color-mix(in_oklab,var(--card)_55%,transparent)] p-4 md:p-5 shadow-soft backdrop-blur-md transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:border-primary/40 hover:shadow-glow ${isDesktop ? "motion-safe:animate-tech-float" : ""}`}
       style={{
-        transform: "perspective(1100px) rotateX(6deg) rotateY(-4deg)",
+        transform: baseTransform,
         transformStyle: "preserve-3d",
         animationDelay: `${index * 0.6}s`,
         willChange: "transform",
@@ -141,13 +157,14 @@ function TechCard({ cat, index }: { cat: Category; index: number }) {
 }
 
 export function TechStack() {
+  const isDesktop = useIsDesktop();
   return (
     <div
-      className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-      style={{ perspective: "1400px" }}
+      className="mt-4 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-5"
+      style={{ perspective: isDesktop ? "1400px" : "none" }}
     >
       {categories.map((c, i) => (
-        <TechCard key={c.title} cat={c} index={i} />
+        <TechCard key={c.title} cat={c} index={i} isDesktop={isDesktop} />
       ))}
     </div>
   );

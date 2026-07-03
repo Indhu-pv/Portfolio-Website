@@ -64,7 +64,7 @@ export const Route = createFileRoute("/")({
 /* -------------------------------- data -------------------------------- */
 
 const stats = [
-  { v: "8.4", l: "CGPA · CSE" },
+  { v: "8.5", l: "CGPA · CSE" },
   { v: "4+", l: "Full-stack projects" },
   { v: "6+", l: "Hackathons & honors" },
   { v: "100%", l: "10th grade score" },
@@ -231,7 +231,7 @@ function HeroSection() {
         aria-hidden
       />
 
-      <div className="mx-auto max-w-6xl px-6 pb-20 pt-16 md:pt-24">
+      <div className="mx-auto max-w-6xl px-6 pb-10 pt-8 md:pb-20 md:pt-24">
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
 
           <blockquote className="mt-8">
@@ -291,7 +291,7 @@ function HeroSection() {
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid gap-4 sm:grid-cols-2 md:mt-20 md:grid-cols-4">
+        <div className="mt-10 grid gap-3 grid-cols-2 md:mt-20 md:gap-4 md:grid-cols-4">
           {stats.map((s, i) => (
             <div
               key={s.l}
