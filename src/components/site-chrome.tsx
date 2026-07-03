@@ -117,13 +117,10 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border/60">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-8 text-sm text-muted-foreground md:flex-row">
-        <p>© 2026 Indhu P · Built with care.</p>
-        <div className="flex gap-4 font-mono text-xs">
-          <a href="mailto:pindhu2605@gmail.com" className="link-underline">pindhu2605@gmail.com</a>
-          <a href="https://github.com/Indhu-pv" target="_blank" rel="noreferrer" className="link-underline">github</a>
-          <a href="https://linkedin.com/in/indhu-pv" target="_blank" rel="noreferrer" className="link-underline">linkedin</a>
-        </div>
+      <div className="mx-auto flex max-w-6xl items-center justify-center gap-4 px-6 py-8 text-sm text-muted-foreground">
+        <a href="mailto:pindhu2605@gmail.com" className="link-underline">pindhu2605@gmail.com</a>
+        <a href="https://github.com/Indhu-pv" target="_blank" rel="noreferrer" className="link-underline">github</a>
+        <a href="https://linkedin.com/in/indhu-pv" target="_blank" rel="noreferrer" className="link-underline">linkedin</a>
       </div>
     </footer>
   );
